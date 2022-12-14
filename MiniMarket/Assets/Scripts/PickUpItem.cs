@@ -4,49 +4,27 @@ using UnityEngine.UI;
 public class PickUpItem : MonoBehaviour
 {
     [SerializeField] private Button _pickUpBtn;
-    [SerializeField] private Button _dropBtn;
     [SerializeField] private GameObject _camera;
 
     [HideInInspector]
     public bool onHand;
+    public GameObject Item;
 
     private RaycastHit _hit;
     private float _distance = 5f;
     private GameObject _currentItem;
     private bool _canPickUp = false;
 
-    void Update()
+    public GameObject getItem()
     {
-        if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out RaycastHit _hit, _distance))
-        {
-            Debug.DrawRay(_camera.transform.position, _camera.transform.forward, Color.red);
-            if (_hit.transform.tag == "Pickable" && !onHand)
-            {
-                _pickUpBtn.gameObject.SetActive(true);
-            }
-            else
-            {
-                _pickUpBtn.gameObject.SetActive(false);
-            }
-        } else
-        {
-            _pickUpBtn.gameObject.SetActive(false);
-        }
-
-        if (onHand)
-        {
-            _dropBtn.gameObject.SetActive(true);
-        }
-        else
-        {
-            _dropBtn.gameObject.SetActive(false);
-        }
+        return _currentItem;
     }
 
     public void PickUp()
     {
         if (_canPickUp) Drop();
 
+        onHand = true;
         if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out _hit, _distance))
         {
             onHand = true;
