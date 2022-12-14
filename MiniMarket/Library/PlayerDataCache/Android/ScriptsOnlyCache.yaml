@@ -5,6 +5,7 @@ ScriptsOnlyBuild:
     - Buttons
     - BuyingItemsPanel
     - CharacterControl
+    - DropZone
     - DynamicJoystick
     - FixedTouchField
     - Item
@@ -89,11 +90,20 @@ ScriptsOnlyBuild:
     fullTypeName: PickUpItem
     methodName: PickUp
   - assembly: Assembly-CSharp
-    fullTypeName: PickUpItem
-    methodName: Drop
+    fullTypeName: ShowHide
+    methodName: Do
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
   - assembly: Assembly-CSharp
     fullTypeName: Katalog
     methodName: SelectItemsByCategory
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
   - assembly: UnityEngine.CoreModule
     fullTypeName: UnityEngine.GameObject
     methodName: SetActive
@@ -116,7 +126,7 @@ ScriptsOnlyBuild:
     fullTypeName: Buttons
     methodName: Fill
   sceneClasses:
-    Assets/Scenes/TestScene.unity:
+    Assets/Scenes/SampleScene.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -139,6 +149,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 54
       Script: {instanceID: 0}
+    - Class: 64
+      Script: {instanceID: 0}
     - Class: 65
       Script: {instanceID: 0}
     - Class: 81
@@ -150,67 +162,69 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1546}
+      Script: {instanceID: 1550}
     - Class: 114
-      Script: {instanceID: 1698}
+      Script: {instanceID: 1864}
     - Class: 114
-      Script: {instanceID: 2074}
+      Script: {instanceID: 2240}
     - Class: 114
-      Script: {instanceID: 2188}
+      Script: {instanceID: 2354}
     - Class: 114
-      Script: {instanceID: 2216}
+      Script: {instanceID: 2382}
     - Class: 114
-      Script: {instanceID: 2524}
+      Script: {instanceID: 2690}
     - Class: 114
-      Script: {instanceID: 2578}
+      Script: {instanceID: 2744}
     - Class: 114
-      Script: {instanceID: 2598}
+      Script: {instanceID: 2764}
     - Class: 114
-      Script: {instanceID: 2656}
+      Script: {instanceID: 2822}
     - Class: 114
-      Script: {instanceID: 2766}
+      Script: {instanceID: 2932}
     - Class: 114
-      Script: {instanceID: 2768}
+      Script: {instanceID: 2934}
     - Class: 114
-      Script: {instanceID: 2770}
+      Script: {instanceID: 2936}
     - Class: 114
-      Script: {instanceID: 2890}
+      Script: {instanceID: 3056}
     - Class: 114
-      Script: {instanceID: 3040}
+      Script: {instanceID: 3206}
     - Class: 114
-      Script: {instanceID: 3190}
+      Script: {instanceID: 3356}
     - Class: 114
-      Script: {instanceID: 3588}
+      Script: {instanceID: 3754}
     - Class: 114
-      Script: {instanceID: 3650}
+      Script: {instanceID: 3816}
     - Class: 114
-      Script: {instanceID: 4002}
+      Script: {instanceID: 4168}
     - Class: 114
-      Script: {instanceID: 4182}
+      Script: {instanceID: 4348}
     - Class: 114
-      Script: {instanceID: 4254}
+      Script: {instanceID: 4420}
     - Class: 114
-      Script: {instanceID: 4532}
+      Script: {instanceID: 4698}
     - Class: 114
-      Script: {instanceID: 5026}
+      Script: {instanceID: 5192}
     - Class: 114
-      Script: {instanceID: 5298}
+      Script: {instanceID: 5464}
     - Class: 114
-      Script: {instanceID: 5908}
+      Script: {instanceID: 6074}
     - Class: 114
-      Script: {instanceID: 6062}
+      Script: {instanceID: 6228}
     - Class: 114
-      Script: {instanceID: 6260}
+      Script: {instanceID: 6426}
     - Class: 114
-      Script: {instanceID: 6406}
+      Script: {instanceID: 6572}
     - Class: 114
-      Script: {instanceID: 6418}
+      Script: {instanceID: 6584}
     - Class: 114
-      Script: {instanceID: 6846}
+      Script: {instanceID: 7012}
     - Class: 114
-      Script: {instanceID: 7528}
+      Script: {instanceID: 7694}
     - Class: 114
-      Script: {instanceID: 7800}
+      Script: {instanceID: 7966}
+    - Class: 114
+      Script: {instanceID: 42036}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -376,7 +390,7 @@ ScriptsOnlyBuild:
     className: Item
   - hash:
       serializedVersion: 2
-      Hash: adaaf270e50c95fb93767d51413628f0
+      Hash: d5a7b0ccb918879d821713e47bf22a33
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PickUpItem
@@ -886,7 +900,7 @@ ScriptsOnlyBuild:
     className: TextMeshProUGUI
   - hash:
       serializedVersion: 2
-      Hash: c615c8299ec1315dd64ac1abb2f5122a
+      Hash: 41a60fbf11f387dcaf3ff390dcacc73c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BuyingItemsPanel
@@ -1078,7 +1092,7 @@ ScriptsOnlyBuild:
     className: UnityOnMouseOverMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 344381e35c046e52ac53ff4979036e48
+      Hash: f65f8b7119fe62d2e4d2b94c68a874d5
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Buttons
@@ -1136,7 +1150,13 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: df53e566cf406108a94c5c0ddd34a967
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DropZone
   platform: 13
   scenePathNames:
-  - Assets/Scenes/TestScene.unity
-  playerPath: C:/Users/Ivan/Documents/GitHub/MiniMarket/MiniMarket/Test2.apk
+  - Assets/Scenes/SampleScene.unity
+  playerPath: C:/Users/Ivan/Documents/GitHub/MiniMarket/MiniMarket/Test3.apk

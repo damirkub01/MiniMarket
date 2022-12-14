@@ -8,6 +8,7 @@ public class BuyingItemsPanel : MonoBehaviour
     public Dictionary<Item, BIPItemPanel> BIPpanels = new Dictionary<Item, BIPItemPanel>();
     public GameObject panelPrefab;
     public RectTransform panelsTransform;
+    public DropZone dropZone;
     private float y = 0;
 
     public void AddItem(Item item)
@@ -59,11 +60,12 @@ public class BuyingItemsPanel : MonoBehaviour
         foreach (var item in itemsToBuy)
         {
             cost += item.Value * item.Key.Cost;
-            ToBuyItems.Add(item.Key);
+            for(int i=0;i<item.Value;i++)
+                ToBuyItems.Add(item.Key);
         }
         if(MoneyManager.DecreaseMoney(cost))
         {
-            Debug.Log("bought");
+            dropZone.DropByTime(ToBuyItems.ToArray(), 60);
             ClearAll();
         }
         else

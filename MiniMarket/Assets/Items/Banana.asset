@@ -17,4 +17,4 @@ MonoBehaviour:
   itemName: "\u0411\u0430\u043D\u0430\u043D\u044B"
   cost: 1
   icon: {fileID: 0}
-  prefab: {fileID: 0}
+  prefab: {fileID: 5561321479859624289, guid: f67bb56f46475f7478099b91a0e28703, type: 3}

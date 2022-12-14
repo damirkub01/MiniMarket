@@ -316,6 +316,7 @@
 "Assets/Scripts/BIP/BIPItemPanel.cs"
 "Assets/Scripts/BIP/BuyingItemsPanel.cs"
 "Assets/Scripts/Buttons.cs"
+"Assets/Scripts/DropZone/DropZone.cs"
 "Assets/Scripts/Economy/MoneyManager.cs"
 "Assets/Scripts/FPS Control/CharacterControl.cs"
 "Assets/Scripts/FPS Control/FixedTouchField.cs"
