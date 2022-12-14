@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Pickable
   - Zone
+  - Place
   layers:
   - Default
   - TransparentFX

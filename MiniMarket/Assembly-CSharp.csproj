@@ -53,7 +53,7 @@
     <UnityVersion>2021.3.15f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\BIP\BIPItemPanel.cs" />
@@ -64,6 +64,7 @@
     <Compile Include="Assets\Scripts\Katalog\ItemPanel.cs" />
     <Compile Include="Assets\Scripts\ItemsScripts\Item.cs" />
     <Compile Include="Assets\Scripts\PickUpItem.cs" />
+    <Compile Include="Assets\Place.cs" />
     <Compile Include="Assets\Scripts\FPS Control\JoyStick.cs" />
     <Compile Include="Assets\Scripts\FPS Control\FixedTouchField.cs" />
     <Compile Include="Assets\Scripts\FPS Control\CharacterControl.cs" />
@@ -71,14 +72,13 @@
     <Compile Include="Assets\Scripts\ItemsScripts\ItemsBase.cs" />
     <Compile Include="Assets\Scripts\UIManager.cs" />
     <Compile Include="Assets\Scripts\ShowHide.cs" />
-    <Compile Include="Assets\Scripts\PlayerRay.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\DynamicJoystick.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Base\Joystick.cs" />
+    <Compile Include="Assets\Scripts\DropZone\DropZone.cs" />
     <Compile Include="Assets\Scripts\BIP\BuyingItemsPanel.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\FloatingJoystick.cs" />
-    <Compile Include="Assets\Scripts\PickUpWeapon.cs" />
+    <Compile Include="Assets\PlaceZone.cs" />
     <Compile Include="Assets\Scripts\Buttons.cs" />
-    <Compile Include="Assets\Scripts\DropZone\DropZone.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,24 +9,16 @@ public class PickUpItem : MonoBehaviour
     [SerializeField] private GameObject _camera;
 
     [HideInInspector]
-    public bool onHand;
-    public GameObject Item;
+    public bool onHand = false;
+
+    private GameObject _currentItem;
+    private PlaceZone zone;
 
     private RaycastHit _hit;
     private float _distance = 5f;
-    private GameObject _currentItem;
-    private bool _canPickUp = false;
-
-    public GameObject getItem()
-    {
-        return _currentItem;
-    }
 
     public void PickUp()
     {
-        if (_canPickUp) Drop();
-
-        onHand = true;
         if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out _hit, _distance))
         {
             onHand = true;
@@ -34,18 +28,29 @@ public class PickUpItem : MonoBehaviour
             _currentItem.transform.parent = transform;
             _currentItem.transform.rotation = transform.rotation;
             _currentItem.transform.localPosition = new Vector3(0, -0.4f, 0);
-            _canPickUp = true;
         }
     }
 
-    public void Drop()
+    public void Fill()
     {
         onHand = false;
-        _currentItem.transform.parent = null;
-        _currentItem.transform.rotation = new Quaternion(0, 0, 0, 0);
-        _currentItem.GetComponent<Rigidbody>().isKinematic = false;
-        _currentItem.GetComponent<Collider>().isTrigger = false;
-        _canPickUp = false;
-        _currentItem = null;
+
+        if (Physics.Raycast(_camera.transform.position, _camera.transform.forward, out _hit, _distance))
+        {
+            if (_hit.transform.CompareTag("Zone"))
+            {
+                for (int i = 0; i < _hit.transform.childCount; i++)
+                {
+                    if (_hit.transform.gameObject.transform.GetChild(i).GetComponent<Place>().IsEmpty())
+                    {
+                        _hit.transform.GetChild(i).GetComponent<Place>().SetEmpty(false);
+                        _currentItem.transform.position = _hit.transform.GetChild(i).position;
+                        _currentItem.transform.rotation = _hit.transform.GetChild(i).rotation;
+                        _currentItem.transform.SetParent(_hit.transform.GetChild(i).transform);
+                        break;
+                    }
+                }
+            }
+        }
     }
 }
